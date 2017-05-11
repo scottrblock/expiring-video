@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ExpiringVideo</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <div class="container">
+    <div class="row">
+      <div class="flashes col-sm-12">
+        <% flash.each do |key, value| %>
+          <div class="one-flash alert alert-<%= key %>">
+            <%= value %>       
+          </div>
+          
+        <% end %>
+      </div>
+      <div class="col-sm-12">
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+  <%= filepicker_js_include_tag %>
+
+</body>
+</html>

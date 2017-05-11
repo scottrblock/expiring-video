@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-sm-6">
+    <div class="well">
+      <%= simple_form_for(@video, :html => {:class => "form"}) do |f| %>
+        <% if @video.errors.any? %>
+          <div id="error_explanation" class="alert alert-warning">
+            <h6>We're sorry, <%= pluralize(@video.errors.count, "error") %> prohibited this video from being saved:</h6>
+            
+            <p>
+              <ul>
+              <% @video.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </p>
+            
+          </div>
+        <% end %>
+          
+          <div class="form-group">
+            <%= f.filepicker_field :attachment_url, :as => :filepicker_url, :class => "btn btn-primary", button_text: "Upload a Video", :extensions => ".3g2,.3gp,.3gp2,.3gpp,.3gpp2,.aac,.ac3,.eac3,.ec3,.f4a,. f4b,.f4v,.flv,.gif,.highwinds,.m4a,.m4b,.m4r,.m4v,.mkv,.mov,. mp3,.mp4,.oga,.ogg,.ogv,.ogx,.ts,.webm,.wma,.wmv", :required => true %>
+          </div>
+
+          <%= f.input :expires_at, :as => :datetime_picker %>
+          <%= hidden_field_tag :offset, '', :id => 'form_offset' %>
+
+        <div class="actions row">
+          <div class="col-sm-12">
+            <div class="pull-right">
+              <%= f.submit :class => "btn btn-success" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
